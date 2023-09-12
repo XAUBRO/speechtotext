@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Input</title>
+    <style>
+        /* Style for centering the content */
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Make the container take the full viewport height */
+        }
+        /* Style for the form container */
+        #questionForm {
+            max-width: 600px; /* Limit the width of the form */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        /* Style for each question container */
+        .questionContainer {
+            margin-bottom: 20px; /* Add space between questions */
+        }
+
+        /* Style for the response input boxes */
+        input[type="text"] {
+            width: 100%; /* Make the input box width 100% of the container */
+            padding: 10px; /* Add padding for better readability */
+        }
+
+        /* Style for the "Start Recording" button */
+        #startRecordingButton {
+            display: block; /* Display the button as a block element */
+            margin-top: 20px; /* Add space between questions and the button */
+        }
+
+        /* Style for the output */
+        #output {
+            margin-top: 20px; /* Add space between the button and the output */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+    <h1>No Click Book</h1>
+    <form id="questionForm">
+        <div id="questionContainer">
+            <label for="question1">What's the working title of the book (include subtitle, if any)?</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">What's the author's name and title/descriptor, exactly as it should show on the book cover?</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">What would you like your book cover to look like? Visualize it.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">List the names of inspiring/supporting individuals to thank or acknowledge.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">Describe your career next steps and long-term vision.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">Why are you writing this book? How will it help achieve your goals and career vision?</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">What are 10 to 20 Burning Questions asked of experts in your field?</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">What's one story that connects everything, and what are the reader's next steps, their call to action?</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">List any specific individuals to consult with on the book content, including people providing testimonials or shared experiences.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">Describe any and all assets, sources, artifacts, references, or professional sources, including related product/service opportunities to tie into the book launch</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">Is there anyone that would be mad if this story was told? List any individuals or companies that  you want to be careful not to mention by name in the book.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <div id="questionContainer">
+            <label for="question1">What additional structural elements do you want to include in each chapter? Ex: Questions or activities for the reader, Chapter summary, Case studies/stories, Quotes, References.</label>
+            <input type="text" id="question1" name="question1">
+        </div>
+        <!-- Add more questions as needed -->
+        <!--
+What inspired you to become a writer, and how did your journey as a writer begin?
+Enter response
+
+Can you describe the genre or category of your book, and what makes it unique within that genre?
+Enter response
+
+Who is your target audience or ideal reader for this book, and what do you hope they will gain from reading it?
+Enter response
+
+How do you plan to structure the chapters of your book, and what themes or topics will each chapter cover?
+Enter response
+
+Are there any specific literary influences, authors, or books that have shaped your writing style or the content of your book?
+Enter response
+
+Do you have a specific writing routine or process that helps you stay productive and focused during the writing process?
+Enter response
+
+Are there any personal experiences or anecdotes that you plan to incorporate into your book, and how do they relate to the overall narrative?
+Enter response
+
+What challenges or obstacles do you anticipate encountering while writing and publishing your book, and how do you plan to overcome them?
+Enter response
+
+Have you considered any multimedia elements for your book, such as illustrations, diagrams, or multimedia content, to enhance the reader's experience?
+Enter response
+
+How do you envision marketing and promoting your book once it's published, and do you have any unique strategies in mind to connect with your readership?
+Enter response-->
+        
+        <button id="startRecordingButton">Start Recording</button>
+    </form>
+    <div id="output"></div>
+    </div>
+
+    <script>
+        const questionForm = document.getElementById("questionForm");
+        const startRecordingButton = document.getElementById("startRecordingButton");
+        const output = document.getElementById("output");
+
+        // Check if the browser supports the SpeechRecognition API
+        if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+            output.innerHTML = "Speech recognition is not supported by this browser.";
+            startRecordingButton.disabled = true;
+        }
+
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = "en-US"; // Set the language for speech recognition
+
+        recognition.onstart = () => {
+            output.innerHTML = "Listening...";
+        };
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            output.innerHTML = `You said: ${transcript}`;
+        };
+
+        recognition.onerror = (event) => {
+            output.innerHTML = `Error: ${event.error}`;
+        };
+
+        recognition.onend = () => {
+            startRecordingButton.disabled = false;
+            startRecordingButton.innerText = "Start Recording";
+        };
+
+        startRecordingButton.addEventListener("click", () => {
+            // Request microphone permission
+            navigator.mediaDevices
+                .getUserMedia({ audio: true })
+                .then(() => {
+                    recognition.start();
+                    startRecordingButton.disabled = true;
+                    startRecordingButton.innerText = "Recording...";
+                })
+                .catch((error) => {
+                    output.innerHTML = `Error: ${error}`;
+                });
+        });
+        
+    </script>
+</body>
+</html>

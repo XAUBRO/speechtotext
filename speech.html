@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice to Text Converter</title>
+    <style>
+        /* Center everything vertically and horizontally */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Use the full viewport height */
+        }
+        h1{
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* Add some basic styling */
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .question-container {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; 
+        }
+        .question-container h1 {
+            margin-bottom: 10px;
+        }
+        .textarea-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width:800px;
+            height:100px;
+            justify-content: center;
+            align-items: center;
+        }
+        .user-input-textarea {
+            width: 100%;
+            height: 150px; /* Fixed height for all textareas */
+            font-size: 16px; /* Adjust font size for consistency */
+            resize: vertical; /* Allow vertical resizing */
+            overflow-y: scroll; /* Add vertical scroll if content exceeds the textarea height */
+        }
+        .startRecordingButton, .stopRecordingButton {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .startRecordingButton {
+            margin-top: 10px; /* Add space between the buttons */  
+            background-color: green; /* Set the start button color to green */
+            color: white; /* Set the text color to black */
+        }
+        .stopRecordingButton {
+            background-color: red; /* Set the stop button color to red */
+            color: white; /* Set the text color to white */
+        }
+    </style>
+</head>
+<body>
+    <h1>No Click Book</h1>
+
+    <!-- First Question -->
+    <div class="question-container">
+        <h1>What's the working title of the book (include subtitle, if any)?</h1>
+        <button class="startRecordingButton">Start Recording</button>
+        <button class="stopRecordingButton">Stop Recording</button>
+        <p class="output"></p>
+        <!-- Add a text box to store what the user says -->
+        <div class="textarea-container">
+            <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+        </div>
+    </div>
+
+    <!-- Repeat the structure for other questions... -->
+    <div class="question-container">
+        <h1>What's the author's name and title/descriptor, exactly as it should show on the book cover?</h1>
+        <button class="startRecordingButton">Start Recording</button>
+        <button class="stopRecordingButton">Stop Recording</button>
+        <p class="output"></p>
+        <!-- Add a text box to store what the user says -->
+        <div class="textarea-container">
+            <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+        </div>
+    </div>
+
+        <!-- First Question -->
+        <div class="question-container">
+            <h1>What would you like your book cover to look like? Visualize it.</h1>
+            <button class="startRecordingButton">Start Recording</button>
+            <button class="stopRecordingButton">Stop Recording</button>
+            <p class="output"></p>
+            <!-- Add a text box to store what the user says -->
+            <div class="textarea-container">
+                <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+            </div>
+        </div>
+    
+        <!-- Repeat the structure for other questions... -->
+        <div class="question-container">
+            <h1>List the names of inspiring/supporting individuals to thank or acknowledge.</h1>
+            <button class="startRecordingButton">Start Recording</button>
+            <button class="stopRecordingButton">Stop Recording</button>
+            <p class="output"></p>
+            <!-- Add a text box to store what the user says -->
+            <div class="textarea-container">
+                <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+            </div>
+        </div>
+        <!-- First Question -->
+        <div class="question-container">
+            <h1>Describe your career next steps and long-term vision.</h1>
+            <button class="startRecordingButton">Start Recording</button>
+            <button class="stopRecordingButton">Stop Recording</button>
+            <p class="output"></p>
+            <!-- Add a text box to store what the user says -->
+            <div class="textarea-container">
+                <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+            </div>
+        </div>
+    
+        <!-- Repeat the structure for other questions... -->
+        <div class="question-container">
+            <h1>Why are you writing this book? How will it help achieve your goals and career vision?</h1>
+            <button class="startRecordingButton">Start Recording</button>
+            <button class="stopRecordingButton">Stop Recording</button>
+            <p class="output"></p>
+            <!-- Add a text box to store what the user says -->
+            <div class="textarea-container">
+                <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+            </div>
+        </div>
+    
+            <!-- First Question -->
+            <div class="question-container">
+                <h1>What are 10 to 20 Burning Questions asked of experts in your field?</h1>
+                <button class="startRecordingButton">Start Recording</button>
+                <button class="stopRecordingButton">Stop Recording</button>
+                <p class="output"></p>
+                <!-- Add a text box to store what the user says -->
+                <div class="textarea-container">
+                    <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                </div>
+            </div>
+        
+            <!-- Repeat the structure for other questions... -->
+            <div class="question-container">
+                <h1>What's one story that connects everything, and what are the reader's next steps, their call to action?</h1>
+                <button class="startRecordingButton">Start Recording</button>
+                <button class="stopRecordingButton">Stop Recording</button>
+                <p class="output"></p>
+                <!-- Add a text box to store what the user says -->
+                <div class="textarea-container">
+                    <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <h1>List any specific individuals to consult with on the book content, including people providing testimonials or shared experiences.</h1>
+                <button class="startRecordingButton">Start Recording</button>
+                <button class="stopRecordingButton">Stop Recording</button>
+                <p class="output"></p>
+                <!-- Add a text box to store what the user says -->
+                <div class="textarea-container">
+                    <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                </div>
+            </div>
+        
+            <!-- Repeat the structure for other questions... -->
+            <div class="question-container">
+                <h1>Describe any and all assets, sources, artifacts, references, or professional sources, including related product/service opportunities to tie into the book launch</h1>
+                <button class="startRecordingButton">Start Recording</button>
+                <button class="stopRecordingButton">Stop Recording</button>
+                <p class="output"></p>
+                <!-- Add a text box to store what the user says -->
+                <div class="textarea-container">
+                    <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                </div>
+            </div>
+        
+                <!-- First Question -->
+                <div class="question-container">
+                    <h1> Is there anyone that would be mad if this story was told? List any individuals or companies that you want to be careful not to mention by name in the book.</h1>
+                    <button class="startRecordingButton">Start Recording</button>
+                    <button class="stopRecordingButton">Stop Recording</button>
+                    <p class="output"></p>
+                    <!-- Add a text box to store what the user says -->
+                    <div class="textarea-container">
+                        <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                    </div>
+                </div>
+            
+                <!-- Repeat the structure for other questions... -->
+                <div class="question-container">
+                    <h1> What additional structural elements do you want to include in each chapter? Ex: Questions or activities for the reader, Chapter summary, Case studies/stories, Quotes, References.</h1>
+                    <button class="startRecordingButton">Start Recording</button>
+                    <button class="stopRecordingButton">Stop Recording</button>
+                    <p class="output"></p>
+                    <!-- Add a text box to store what the user says -->
+                    <div class="textarea-container">
+                        <textarea class="user-input-textarea" placeholder="Your speech will appear here"></textarea>
+                    </div>
+                </div>
+    
+
+    <script>
+        const questionContainers = document.querySelectorAll(".question-container");
+
+        questionContainers.forEach((container, index) => {
+            const startRecordingButton = container.querySelector(".startRecordingButton");
+            const stopRecordingButton = container.querySelector(".stopRecordingButton");
+            const output = container.querySelector(".output");
+            const userInput = container.querySelector(".user-input-textarea");
+            let recognition;
+
+            // Check if the browser supports the SpeechRecognition API
+            if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+                recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.lang = 'en-US'; // Set the language for speech recognition
+
+                recognition.onstart = () => {
+                    output.innerHTML = "Listening...";
+                    startRecordingButton.disabled = true;
+                    stopRecordingButton.style.display = "inline"; // Show the stop button
+                };
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    output.innerHTML = `You said: ${transcript}`;
+                    // Append the transcript to the text box
+                    userInput.value += transcript + ' ';
+                };
+
+                recognition.onerror = (event) => {
+                    output.innerHTML = `Error: ${event.error}`;
+                    stopRecording(); // Stop recording on error
+                };
+
+                recognition.onend = () => {
+                    startRecordingButton.disabled = false;
+                    stopRecordingButton.style.display = "none"; // Hide the stop button
+                };
+
+                startRecordingButton.addEventListener("click", () => {
+                    // Request microphone permission
+                    navigator.mediaDevices
+                        .getUserMedia({ audio: true })
+                        .then(() => {
+                            recognition.start();
+                        })
+                        .catch((error) => {
+                            output.innerHTML = `Error: ${error}`;
+                        });
+                });
+
+                stopRecordingButton.addEventListener("click", () => {
+                    stopRecording();
+                });
+
+                function stopRecording() {
+                    if (recognition) {
+                        recognition.stop();
+                    }
+                }
+            } else {
+                output.innerHTML = "Speech recognition is not supported by this browser.";
+                startRecordingButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
